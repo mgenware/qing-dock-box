@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      html {
+        box-sizing: border-box;
+      }
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+      qing-dock-box {
+        border: 1px solid gray;
+        width: 200px;
+        height: 200px;
+      }
+      div {
+        background-color: #fecd21;
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    Default:
+    <qing-dock-box>
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    T:
+    <qing-dock-box t>
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    B:
+    <qing-dock-box b>
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    <qing-dock-box l>
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    <qing-dock-box r>
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    Dynamically add or remove an attribute: <button onclick="handleAddClick()">Add</button>
+    <button onclick="handleRemoveClick()">Remove</button>
+    <qing-dock-box id="box1">
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    <script type="module" src="../dist/main.js"></script>
+    <script>
+      const box1 = document.getElementById('box1');
+
+      function handleAddClick() {
+        box1.setAttribute('t', '');
+      }
+
+      function handleRemoveClick() {
+        box1.removeAttribute('t');
+      }
+    </script>
+  </body>
+</html>
