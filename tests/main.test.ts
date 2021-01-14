@@ -5,29 +5,10 @@ import '..';
 import { QingDockBox } from '..';
 
 const gridSize = 50;
+const pStyle = 'width:200px;height:200px';
+const cStyle = 'width:100px;height:100px';
 
-const defaultStyles = html` <style>
-  html {
-    box-sizing: border-box;
-  }
-  *,
-  *:before,
-  *:after {
-    box-sizing: inherit;
-  }
-  qing-dock-box {
-    border: 1px solid gray;
-    width: 200px;
-    height: 200px;
-  }
-  div {
-    background-color: #fecd21;
-    width: 100px;
-    height: 100px;
-  }
-</style>`;
-
-function verifyXY(el: QingDockBox, x: number, y: number) {
+function verifyXY(el: Element, x: number, y: number) {
   const rect = el.getBoundingClientRect();
   const parentRect = el.parentElement?.getBoundingClientRect();
   if (!parentRect) {
@@ -37,9 +18,20 @@ function verifyXY(el: QingDockBox, x: number, y: number) {
   expect(rect.y - parentRect.y).to.equal(y);
 }
 
-describe('Centers child by default', () => {
+describe('Props', () => {
   it('Has a default value of 0', async () => {
-    const el: QingDockBox = await fixture(html`${defaultStyles}<qing-dock-box></qing-dock-box>`);
-    verifyXY(el, gridSize, gridSize);
+    const el: QingDockBox = await fixture(
+      html`<qing-dock-box style=${pStyle}><div style=${cStyle}>A</div></qing-dock-box>`,
+    );
+    const child = el.firstElementChild!;
+    verifyXY(child, gridSize, gridSize);
+  });
+
+  it('t', async () => {
+    const el: QingDockBox = await fixture(
+      html`<qing-dock-box t style=${pStyle}><div style=${cStyle}>A</div></qing-dock-box>`,
+    );
+    const child = el.firstElementChild!;
+    verifyXY(child, gridSize, gridSize);
   });
 });
