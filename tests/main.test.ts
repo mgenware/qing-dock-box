@@ -4,18 +4,19 @@ import { html, fixture, expect } from '@open-wc/testing';
 import '..';
 import { QingDockBox } from '..';
 
-const gridSize = 50;
 const pStyle = 'width:200px;height:200px';
-const cStyle = 'width:100px;height:100px';
+const cStyle = 'min-width:100px;min-height:100px';
 
-function verifyXY(el: Element, x: number, y: number) {
+function verifyRect(el: Element, x: number, y: number, width: number, height: number) {
   const rect = el.getBoundingClientRect();
   const parentRect = el.parentElement?.getBoundingClientRect();
   if (!parentRect) {
     throw new Error(`Unexpected undefined \`parentRect\` for element ${el}`);
   }
-  expect(rect.x - parentRect.x).to.equal(x);
-  expect(rect.y - parentRect.y).to.equal(y);
+  expect(rect.x - parentRect.x).to.eq(x);
+  expect(rect.y - parentRect.y).to.eq(y);
+  expect(rect.width).to.eq(width);
+  expect(rect.height).to.eq(height);
 }
 
 it('Has a default value of 0', async () => {
@@ -23,7 +24,7 @@ it('Has a default value of 0', async () => {
     html`<qing-dock-box style=${pStyle}><div style=${cStyle}>A</div></qing-dock-box>`,
   );
   const child = el.firstElementChild!;
-  verifyXY(child, gridSize, gridSize);
+  verifyRect(child, 50, 50, 100, 100);
 });
 
 it('t', async () => {
@@ -31,7 +32,7 @@ it('t', async () => {
     html`<qing-dock-box t style=${pStyle}><div style=${cStyle}>A</div></qing-dock-box>`,
   );
   const child = el.firstElementChild!;
-  verifyXY(child, gridSize, 0);
+  verifyRect(child, 50, 0, 100, 100);
 });
 
 it('b', async () => {
@@ -39,7 +40,7 @@ it('b', async () => {
     html`<qing-dock-box b style=${pStyle}><div style=${cStyle}>A</div></qing-dock-box>`,
   );
   const child = el.firstElementChild!;
-  verifyXY(child, gridSize, gridSize * 2);
+  verifyRect(child, 50, 100, 100, 100);
 });
 
 it('l', async () => {
@@ -47,7 +48,7 @@ it('l', async () => {
     html`<qing-dock-box l style=${pStyle}><div style=${cStyle}>A</div></qing-dock-box>`,
   );
   const child = el.firstElementChild!;
-  verifyXY(child, 0, gridSize);
+  verifyRect(child, 0, 50, 100, 100);
 });
 
 it('r', async () => {
@@ -55,5 +56,37 @@ it('r', async () => {
     html`<qing-dock-box r style=${pStyle}><div style=${cStyle}>A</div></qing-dock-box>`,
   );
   const child = el.firstElementChild!;
-  verifyXY(child, gridSize * 2, gridSize);
+  verifyRect(child, 100, 50, 100, 100);
+});
+
+it('Corner: t l', async () => {
+  const el: QingDockBox = await fixture(
+    html`<qing-dock-box t l style=${pStyle}><div style=${cStyle}>A</div></qing-dock-box>`,
+  );
+  const child = el.firstElementChild!;
+  verifyRect(child, 0, 0, 100, 100);
+});
+
+it('Corner: t r', async () => {
+  const el: QingDockBox = await fixture(
+    html`<qing-dock-box t r style=${pStyle}><div style=${cStyle}>A</div></qing-dock-box>`,
+  );
+  const child = el.firstElementChild!;
+  verifyRect(child, 100, 0, 100, 100);
+});
+
+it('Corner: b l', async () => {
+  const el: QingDockBox = await fixture(
+    html`<qing-dock-box b l style=${pStyle}><div style=${cStyle}>A</div></qing-dock-box>`,
+  );
+  const child = el.firstElementChild!;
+  verifyRect(child, 0, 100, 100, 100);
+});
+
+it('Corner: b r', async () => {
+  const el: QingDockBox = await fixture(
+    html`<qing-dock-box b r style=${pStyle}><div style=${cStyle}>A</div></qing-dock-box>`,
+  );
+  const child = el.firstElementChild!;
+  verifyRect(child, 100, 100, 100, 100);
 });

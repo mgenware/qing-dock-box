@@ -6,6 +6,7 @@ import { PlumElement, PlumPropDefs } from 'plum-element';
  * --- :host (flex) --------------
  * --- root div (flex) -----------
  *  | spacing based on configuration
+ * --- child div (flex) ----------
  * --- slot ----------------------
  *
  * We use a root div in between :host and slot because we don't want flex
@@ -20,15 +21,14 @@ template.innerHTML = `
   }
   #root {
     display: flex;
-    flex-direction: column;
     flex-grow: 1;
   }
   #child {
     display: flex;
-    flex-grow: 1;
   }
   ::slotted(*) {
     flex-grow: 1;
+    flex-basis: 0;
   }
   </style>
   <div id="root"><div id="child"><slot></slot></div></div>`;
@@ -156,6 +156,14 @@ export class QingDockBox extends PlumElement {
         if (l || r) {
           rootStyle.alignItems = this.l ? flexStartValue : flexEndValue;
         }
+      }
+    } else if (edges === 3) {
+      childStyle.flexGrow = growEnabledValue;
+      if (!l || !r) {
+        rootStyle.alignItems = this.l ? flexStartValue : flexEndValue;
+      } else {
+        rootStyle.flexDirection = directionRowValue;
+        rootStyle.alignItems = this.t ? flexStartValue : flexEndValue;
       }
     }
   }

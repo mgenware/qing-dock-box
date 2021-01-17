@@ -17,8 +17,8 @@
       }
       div {
         background-color: #fecd21;
-        width: 100px;
-        height: 100px;
+        min-width: 100px;
+        min-height: 100px;
       }
     </style>
   </head>
@@ -46,6 +46,38 @@
     Dynamically add or remove an attribute: <button onclick="handleAddClick()">Add</button>
     <button onclick="handleRemoveClick()">Remove</button>
     <qing-dock-box id="box1">
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    Corner (T+R):
+    <qing-dock-box t r>
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    Corner 2 (B+L):
+    <qing-dock-box b l>
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    Stretched horizontally (L+R):
+    <qing-dock-box l r>
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    Stretched vertically (T+B):
+    <qing-dock-box t b>
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    3 sides (Left):
+    <qing-dock-box t b l>
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    3 sides (Right):
+    <qing-dock-box t b r>
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    3 sides (Top):
+    <qing-dock-box t l r>
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    3 sides (Bottom):
+    <qing-dock-box b l r>
       <div>qing-dock-box</div>
     </qing-dock-box>
     <script type="module" src="../dist/main.js"></script>
