@@ -3014,6 +3014,11 @@ pkg-dir@^4.2.0:
   dependencies:
     find-up "^4.0.0"
 
+plum-element@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/plum-element/-/plum-element-0.0.1.tgz#af241ac1db727dc41bb230da3e9716b257a57020"
+  integrity sha512-zxVjSnRH2MHtDMS845fbdcPHoFx2OFstTyJyrioW51x/z0Ll2G9wTtatMEdKolVnK4LxNq6NN+GAGqyydykBaQ==
+
 portfinder@^1.0.28:
   version "1.0.28"
   resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.28.tgz#67c4622852bd5374dd1dd900f779f53462fac778"

@@ -1,3 +1,5 @@
+import { PlumElement, PlumPropDefs } from 'plum-element';
+
 /**
  * ## Element hierarchy:
  *
@@ -20,39 +22,73 @@ template.innerHTML = `
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    justify-content: center;
-    align-items: center;
+  }
+  #child {
+    display: flex;
+    flex-grow: 1;
+  }
+  ::slotted(*) {
+    flex-grow: 1;
   }
   </style>
-  <div id="root"><slot></slot></div>`;
+  <div id="root"><div id="child"><slot></slot></div></div>`;
 
 const tAttr = 't';
 const bAttr = 'b';
 const lAttr = 'l';
 const rAttr = 'r';
-const edgeAttrs = [tAttr, bAttr, lAttr, rAttr];
 const flexStartValue = 'flex-start';
 const flexEndValue = 'flex-end';
+const centerValue = 'center';
+const growEnabledValue = '1';
+const growDisabledValue = '0';
+const directionRowValue = 'row';
+const directionColumnValue = 'column';
 
-export class QingDockBox extends HTMLElement {
-  static get observedAttributes() {
-    return [tAttr, bAttr, lAttr, rAttr];
+export class QingDockBox extends PlumElement {
+  static get plProps(): PlumPropDefs {
+    return {
+      [tAttr]: 'b',
+      [lAttr]: 'b',
+      [rAttr]: 'b',
+      [bAttr]: 'b',
+    };
   }
 
   #rootDiv: HTMLDivElement;
+  #childDiv: HTMLDivElement;
   #sr: ShadowRoot;
 
-  #props: Record<string, boolean> = {};
-
-  getProp(prop: string): boolean {
-    return this.#props[prop] || false;
+  get t(): boolean {
+    return this.getPLProp(tAttr);
   }
 
-  setProp(prop: string, value: boolean) {
-    const prev = this.#props[prop];
-    if (prev !== value) {
-      this.updateProp(prop, value);
-    }
+  set t(val: boolean) {
+    this.setPLProp(tAttr, val);
+  }
+
+  get b(): boolean {
+    return this.getPLProp(bAttr);
+  }
+
+  set b(val: boolean) {
+    this.setPLProp(bAttr, val);
+  }
+
+  get l(): boolean {
+    return this.getPLProp(lAttr);
+  }
+
+  set l(val: boolean) {
+    this.setPLProp(lAttr, val);
+  }
+
+  get r(): boolean {
+    return this.getPLProp(rAttr);
+  }
+
+  set r(val: boolean) {
+    this.setPLProp(rAttr, val);
   }
 
   constructor() {
@@ -63,16 +99,11 @@ export class QingDockBox extends HTMLElement {
     this.#sr = sr;
 
     this.#rootDiv = this.mustGetElement('#root');
+    this.#childDiv = this.mustGetElement('#child');
   }
 
   connectedCallback() {
-    const rootDivStyle = this.#rootDiv.style;
-    rootDivStyle.justifyContent = 'center';
-    rootDivStyle.alignItems = 'center';
-  }
-
-  attributeChangedCallback(name: string, _oldValue: string | null, newValue: string | null) {
-    this.setProp(name, newValue !== null);
+    this.updateLayout();
   }
 
   private mustGetElement<T extends HTMLElement>(query: string): T {
@@ -83,30 +114,48 @@ export class QingDockBox extends HTMLElement {
     return element as T;
   }
 
-  private updateProp(prop: string, val: boolean) {
-    // Update props.
-    this.#props[prop] = val;
-    // Update attribute.
-    if (val) {
-      this.setAttribute(prop, '');
-    } else {
-      this.removeAttribute(prop);
+  protected onPLPropUpdated() {
+    if (!this.isConnected) {
+      return;
     }
-    // Update style.
+    this.updateLayout();
+  }
+
+  private getEdges(): { t: boolean; b: boolean; l: boolean; r: boolean } {
+    return {
+      t: this.t,
+      b: this.b,
+      l: this.l,
+      r: this.r,
+    };
+  }
+
+  private updateLayout() {
     const rootStyle = this.#rootDiv.style;
-    const edges = edgeAttrs.filter((p) => this.getProp(p)).length;
-    if (edges <= 2) {
-      if (this.getProp(tAttr)) {
-        rootStyle.justifyContent = flexStartValue;
-      }
-      if (this.getProp(bAttr)) {
-        rootStyle.justifyContent = flexEndValue;
-      }
-      if (this.getProp(lAttr)) {
-        rootStyle.alignItems = flexStartValue;
-      }
-      if (this.getProp(rAttr)) {
-        rootStyle.alignItems = flexEndValue;
+    const childStyle = this.#childDiv.style;
+    const { t, b, l, r } = this.getEdges();
+    const edges = [t, b, l, r].filter((e) => e).length;
+
+    // Reset styles.
+    rootStyle.flexDirection = directionColumnValue;
+    rootStyle.justifyContent = centerValue;
+    rootStyle.alignItems = centerValue;
+    childStyle.flexGrow = growDisabledValue;
+
+    if (edges === 1 || edges === 2) {
+      // Check if it's stretched vertically or horizontally.
+      if (t && b) {
+        childStyle.flexGrow = growEnabledValue;
+      } else if (l && r) {
+        childStyle.flexGrow = growEnabledValue;
+        rootStyle.flexDirection = directionRowValue;
+      } else {
+        if (t || b) {
+          rootStyle.justifyContent = this.t ? flexStartValue : flexEndValue;
+        }
+        if (l || r) {
+          rootStyle.alignItems = this.l ? flexStartValue : flexEndValue;
+        }
       }
     }
   }

@@ -47,5 +47,8 @@
     "source-map-support": "^0.5.19",
     "tslib": "^2.1.0",
     "typescript": "^4.1.3"
+  },
+  "dependencies": {
+    "plum-element": "^0.0.1"
   }
 }
