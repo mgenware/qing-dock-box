@@ -1,25 +1,11 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable import/no-duplicates */
-import { html, fixture, expect } from '@open-wc/testing';
+import { html, fixture } from '@open-wc/testing';
 import '..';
 import { QingDockBox } from '..';
+import { verifyRect, cStyle, pStyle } from './common';
 
-const pStyle = 'width:200px;height:200px';
-const cStyle = 'min-width:100px;min-height:100px';
-
-function verifyRect(el: Element, x: number, y: number, width: number, height: number) {
-  const rect = el.getBoundingClientRect();
-  const parentRect = el.parentElement?.getBoundingClientRect();
-  if (!parentRect) {
-    throw new Error(`Unexpected undefined \`parentRect\` for element ${el}`);
-  }
-  expect(rect.x - parentRect.x).to.eq(x);
-  expect(rect.y - parentRect.y).to.eq(y);
-  expect(rect.width).to.eq(width);
-  expect(rect.height).to.eq(height);
-}
-
-it('Has a default value of 0', async () => {
+it('Centered by default', async () => {
   const el: QingDockBox = await fixture(
     html`<qing-dock-box style=${pStyle}><div style=${cStyle}>A</div></qing-dock-box>`,
   );
@@ -89,4 +75,44 @@ it('Corner: b r', async () => {
   );
   const child = el.firstElementChild!;
   verifyRect(child, 100, 100, 100, 100);
+});
+
+it('3 edges: left', async () => {
+  const el: QingDockBox = await fixture(
+    html`<qing-dock-box t b l style=${pStyle}><div style=${cStyle}>A</div></qing-dock-box>`,
+  );
+  const child = el.firstElementChild!;
+  verifyRect(child, 0, 0, 100, 200);
+});
+
+it('3 edges: right', async () => {
+  const el: QingDockBox = await fixture(
+    html`<qing-dock-box t b r style=${pStyle}><div style=${cStyle}>A</div></qing-dock-box>`,
+  );
+  const child = el.firstElementChild!;
+  verifyRect(child, 100, 0, 100, 200);
+});
+
+it('3 edges: top', async () => {
+  const el: QingDockBox = await fixture(
+    html`<qing-dock-box t l r style=${pStyle}><div style=${cStyle}>A</div></qing-dock-box>`,
+  );
+  const child = el.firstElementChild!;
+  verifyRect(child, 0, 0, 200, 100);
+});
+
+it('3 edges: bottom', async () => {
+  const el: QingDockBox = await fixture(
+    html`<qing-dock-box r b l style=${pStyle}><div style=${cStyle}>A</div></qing-dock-box>`,
+  );
+  const child = el.firstElementChild!;
+  verifyRect(child, 0, 100, 200, 100);
+});
+
+it('full', async () => {
+  const el: QingDockBox = await fixture(
+    html`<qing-dock-box t b l r style=${pStyle}><div style=${cStyle}>A</div></qing-dock-box>`,
+  );
+  const child = el.firstElementChild!;
+  verifyRect(child, 0, 0, 200, 200);
 });

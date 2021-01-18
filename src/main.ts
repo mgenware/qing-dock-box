@@ -1,3 +1,4 @@
+/* eslint-disable no-multi-assign */
 import { PlumElement, PlumPropDefs } from 'plum-element';
 
 /**
@@ -37,6 +38,10 @@ const tAttr = 't';
 const bAttr = 'b';
 const lAttr = 'l';
 const rAttr = 'r';
+const hAttr = 'h';
+const vAttr = 'v';
+const fAttr = 'f';
+const attrs = [tAttr, bAttr, lAttr, rAttr, hAttr, vAttr, fAttr];
 const flexStartValue = 'flex-start';
 const flexEndValue = 'flex-end';
 const centerValue = 'center';
@@ -44,15 +49,13 @@ const growEnabledValue = '1';
 const growDisabledValue = '0';
 const directionRowValue = 'row';
 const directionColumnValue = 'column';
+const stretchValue = 'stretch';
 
 export class QingDockBox extends PlumElement {
   static get plProps(): PlumPropDefs {
-    return {
-      [tAttr]: 'b',
-      [lAttr]: 'b',
-      [rAttr]: 'b',
-      [bAttr]: 'b',
-    };
+    const defs: PlumPropDefs = {};
+    attrs.forEach((attr) => (defs[attr] = 'b'));
+    return defs;
   }
 
   #rootDiv: HTMLDivElement;
@@ -91,6 +94,30 @@ export class QingDockBox extends PlumElement {
     this.setPLProp(rAttr, val);
   }
 
+  get h(): boolean {
+    return this.getPLProp(hAttr);
+  }
+
+  set h(val: boolean) {
+    this.setPLProp(hAttr, val);
+  }
+
+  get v(): boolean {
+    return this.getPLProp(vAttr);
+  }
+
+  set v(val: boolean) {
+    this.setPLProp(vAttr, val);
+  }
+
+  get f(): boolean {
+    return this.getPLProp(fAttr);
+  }
+
+  set f(val: boolean) {
+    this.setPLProp(fAttr, val);
+  }
+
   constructor() {
     super();
 
@@ -121,13 +148,20 @@ export class QingDockBox extends PlumElement {
     this.updateLayout();
   }
 
-  private getEdges(): { t: boolean; b: boolean; l: boolean; r: boolean } {
-    return {
-      t: this.t,
-      b: this.b,
-      l: this.l,
-      r: this.r,
-    };
+  protected getEdges(): { t: boolean; b: boolean; l: boolean; r: boolean } {
+    let { t, b, l, r } = this;
+    const { f, h, v } = this;
+    if (f) {
+      t = b = l = r = true;
+    } else {
+      if (h) {
+        l = r = true;
+      }
+      if (v) {
+        t = b = true;
+      }
+    }
+    return { t, b, l, r };
   }
 
   private updateLayout() {
@@ -165,6 +199,9 @@ export class QingDockBox extends PlumElement {
         rootStyle.flexDirection = directionRowValue;
         rootStyle.alignItems = this.t ? flexStartValue : flexEndValue;
       }
+    } else if (edges === 4) {
+      childStyle.flexGrow = growEnabledValue;
+      rootStyle.alignItems = stretchValue;
     }
   }
 }
