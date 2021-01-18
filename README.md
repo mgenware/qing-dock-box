@@ -7,3 +7,23 @@
 A web component to align its child element on different sides.
 
 [Documentation and demo](https://mgenware.github.io/qing-dock-box/).
+
+## Installation
+
+```sh
+yarn add qing-dock-box
+```
+
+## Module types
+
+ES module (Recommended):
+
+```ts
+import 'qing-dock-box';
+```
+
+Legacy browser build:
+
+```html
+<script src="qing-dock-box/dist/main.browser.min.js"></script>
+```

@@ -1,4 +1,5 @@
 /* eslint-disable no-multi-assign */
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { PlumElement, PlumPropDefs } from 'plum-element';
 
 /**

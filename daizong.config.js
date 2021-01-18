@@ -18,8 +18,14 @@ module.exports = {
 
   // Cleans, lints, compiles sources and runs tests.
   build: {
-    run: ['#clean', 'tsc -b tests', '#lint', '#t'],
+    run: ['#clean', 'tsc -b tests', '#lint', '#t', '#browser-build'],
     envGroups: ['production'],
+  },
+
+  'browser-build': {
+    run: [
+      'esbuild ./dist/main.js --bundle --minify --sourcemap --target=chrome58,firefox57,safari11,edge16 --outfile=dist/main.browser.min.js',
+    ],
   },
 
   // Deletes compiled files, auto triggered by `yarn r dev` or `yarn r build`.
