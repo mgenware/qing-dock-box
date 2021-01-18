@@ -1,0 +1,14 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "author": "Mgenware (https://github.com/mgenware)",
+  "main": "main.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "esbuild main.js --outfile=./dist/main.min.js --bundle --minify --sourcemap --target=chrome58,firefox57,safari11,edge16"
+  },
+  "private": true,
+  "dependencies": {
+    "esbuild": "^0.8.33"
+  }
+}
