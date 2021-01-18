@@ -1,18 +1,15 @@
 {
-  "name": "__PKG_NAME__",
+  "name": "qing-dock-box",
   "version": "0.0.0",
-  "description": "__DESCRIPTION__",
+  "description": "A web component to align its child element on different sides",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
   "author": "Mgenware (https://github.com/mgenware)",
-  "homepage": "https://github.com/mgenware/__PKG_NAME__",
-  "bugs": "https://github.com/mgenware/__PKG_NAME__/issues",
-  "keywords": [
-    "__KEY_WORDS__"
-  ],
+  "homepage": "https://github.com/mgenware/qing-dock-box",
+  "bugs": "https://github.com/mgenware/qing-dock-box/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mgenware/__PKG_NAME__.git"
+    "url": "https://github.com/mgenware/qing-dock-box.git"
   },
   "license": "MIT",
   "scripts": {
