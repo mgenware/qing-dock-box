@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      html {
+        box-sizing: border-box;
+      }
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+      qing-dock-box {
+        border: 1px solid gray;
+        width: 200px;
+        height: 200px;
+      }
+      div {
+        background-color: #fecd21;
+        min-width: 100px;
+        min-height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    Default:
+    <qing-dock-box>
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    T:
+    <qing-dock-box t>
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    B:
+    <qing-dock-box b>
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    L:
+    <qing-dock-box l>
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    R:
+    <qing-dock-box r>
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    Dynamically add or remove an attribute:
+    <button onclick="handleAddClick()">Add</button>
+    <button onclick="handleRemoveClick()">Remove</button>
+    <qing-dock-box id="box1">
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    Corner (T+R):
+    <qing-dock-box t r>
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    Corner 2 (B+L):
+    <qing-dock-box b l>
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    Stretched horizontally (L+R):
+    <qing-dock-box l r>
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    Stretched vertically (T+B):
+    <qing-dock-box t b>
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    3 sides (Left):
+    <qing-dock-box t b l>
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    3 sides (Right):
+    <qing-dock-box t b r>
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    3 sides (Top):
+    <qing-dock-box t l r>
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    3 sides (Bottom):
+    <qing-dock-box b l r>
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    Full:
+    <qing-dock-box t b l r>
+      <div>qing-dock-box</div>
+    </qing-dock-box>
+    <script type="module" src="../dist/main.js"></script>
+    <script>
+      const box1 = document.getElementById("box1");
+
+      function handleAddClick() {
+        box1.setAttribute("t", "");
+      }
+
+      function handleRemoveClick() {
+        box1.removeAttribute("t");
+      }
+    </script>
+    <script src="./dist/main.js" type="module"></script>
+  </body>
+</html>
