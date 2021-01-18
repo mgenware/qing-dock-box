@@ -1,4 +1,6 @@
-/* eslint-disable no-param-reassign, @typescript-eslint/no-explicit-any */
+/* eslint-disable import/no-duplicates */
+/* eslint-disable no-param-reassign */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import '..';
 import { QingDockBox } from '..';
 
