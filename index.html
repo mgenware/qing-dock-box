@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Demo of qing-dock-box</title>
     <style>
       html {
         box-sizing: border-box;
@@ -85,16 +86,16 @@
     <qing-dock-box t b l r>
       <div>qing-dock-box</div>
     </qing-dock-box>
-    <script type="module" src="./dist/main.js"></script>
+    <script src="./dist/main.min.js"></script>
     <script>
-      const box1 = document.getElementById("box1");
+      const box1 = document.getElementById('box1');
 
       function handleAddClick() {
-        box1.setAttribute("t", "");
+        box1.setAttribute('t', '');
       }
 
       function handleRemoveClick() {
-        box1.removeAttribute("t");
+        box1.removeAttribute('t');
       }
     </script>
   </body>
