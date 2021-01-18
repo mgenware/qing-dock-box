@@ -4,4 +4,6 @@
 [![npm version](https://img.shields.io/npm/v/qing-dock-box.svg?style=flat-square)](https://npmjs.com/package/qing-dock-box)
 [![Node.js Version](http://img.shields.io/node/v/qing-dock-box.svg?style=flat-square)](https://nodejs.org/en/)
 
-Work-in-progress.
+A web component to align its child element on different sides.
+
+[Documentation and demo](https://mgenware.github.io/qing-dock-box/).
