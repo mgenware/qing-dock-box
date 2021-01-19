@@ -17,6 +17,9 @@
         background-color: #fecd21;
         min-width: 100px;
         min-height: 100px;
+        text-align: center;
+        padding-top: 0.3rem;
+        border: 2px solid #00386a;
       }
 
       section {
@@ -78,9 +81,21 @@
         <div>qing-dock-box</div>
       </qing-dock-box>
     </section>
+    <h2>Stretched horizontally (H)</h2>
+    <section>
+      <qing-dock-box h>
+        <div>qing-dock-box</div>
+      </qing-dock-box>
+    </section>
     <h2>Stretched vertically (T+B)</h2>
     <section>
       <qing-dock-box t b>
+        <div>qing-dock-box</div>
+      </qing-dock-box>
+    </section>
+    <h2>Stretched vertically (V)</h2>
+    <section>
+      <qing-dock-box v>
         <div>qing-dock-box</div>
       </qing-dock-box>
     </section>
@@ -115,7 +130,7 @@
       </qing-dock-box>
     </section>
     <script src="./lib/prism.js"></script>
-    <script src="./dist/main.7f44ead8.js"></script>
+    <script src="./static/main.7f44ead8.js"></script>
     <script>
       for (const node of document.getElementsByTagName('section')) {
         const codeEl = document.createElement('code');
