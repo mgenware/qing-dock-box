@@ -2,14 +2,11 @@
 <html>
   <head>
     <title>Demo of qing-dock-box</title>
+    <link rel="stylesheet" href="./lib/modern-normalize.css" />
+    <link rel="stylesheet" href="./lib/prism.css" />
     <style>
-      html {
-        box-sizing: border-box;
-      }
-      *,
-      *:before,
-      *:after {
-        box-sizing: inherit;
+      body {
+        padding: 2rem;
       }
       qing-dock-box {
         border: 1px solid gray;
@@ -21,81 +18,115 @@
         min-width: 100px;
         min-height: 100px;
       }
+
+      section {
+        display: flex;
+      }
+      pre:nth-child(2) {
+        flex-grow: 1;
+        padding: 1rem;
+        overflow-y: auto;
+      }
     </style>
   </head>
   <body>
-    Default:
-    <qing-dock-box>
-      <div>qing-dock-box</div>
-    </qing-dock-box>
-    T:
-    <qing-dock-box t>
-      <div>qing-dock-box</div>
-    </qing-dock-box>
-    B:
-    <qing-dock-box b>
-      <div>qing-dock-box</div>
-    </qing-dock-box>
-    L:
-    <qing-dock-box l>
-      <div>qing-dock-box</div>
-    </qing-dock-box>
-    R:
-    <qing-dock-box r>
-      <div>qing-dock-box</div>
-    </qing-dock-box>
-    Dynamically add or remove an attribute:
-    <button onclick="handleAddClick()">Add</button>
-    <button onclick="handleRemoveClick()">Remove</button>
-    <qing-dock-box id="box1">
-      <div>qing-dock-box</div>
-    </qing-dock-box>
-    Corner (T+R):
-    <qing-dock-box t r>
-      <div>qing-dock-box</div>
-    </qing-dock-box>
-    Corner 2 (B+L):
-    <qing-dock-box b l>
-      <div>qing-dock-box</div>
-    </qing-dock-box>
-    Stretched horizontally (L+R):
-    <qing-dock-box l r>
-      <div>qing-dock-box</div>
-    </qing-dock-box>
-    Stretched vertically (T+B):
-    <qing-dock-box t b>
-      <div>qing-dock-box</div>
-    </qing-dock-box>
-    3 sides (Left):
-    <qing-dock-box t b l>
-      <div>qing-dock-box</div>
-    </qing-dock-box>
-    3 sides (Right):
-    <qing-dock-box t b r>
-      <div>qing-dock-box</div>
-    </qing-dock-box>
-    3 sides (Top):
-    <qing-dock-box t l r>
-      <div>qing-dock-box</div>
-    </qing-dock-box>
-    3 sides (Bottom):
-    <qing-dock-box b l r>
-      <div>qing-dock-box</div>
-    </qing-dock-box>
-    Full:
-    <qing-dock-box t b l r>
-      <div>qing-dock-box</div>
-    </qing-dock-box>
-    <script src="./dist/main.min.js"></script>
+    <h2>Default</h2>
+    <section>
+      <qing-dock-box>
+        <div>qing-dock-box</div>
+      </qing-dock-box>
+    </section>
+    <h2>Top (t)</h2>
+    <section>
+      <qing-dock-box t>
+        <div>qing-dock-box</div>
+      </qing-dock-box>
+    </section>
+    <h2>Bottom (b)</h2>
+    <section>
+      <qing-dock-box b>
+        <div>qing-dock-box</div>
+      </qing-dock-box>
+    </section>
+    <h2>Left (l)</h2>
+    <section>
+      <qing-dock-box l>
+        <div>qing-dock-box</div>
+      </qing-dock-box>
+    </section>
+    <h2>Right (r)</h2>
+    <section>
+      <qing-dock-box r>
+        <div>qing-dock-box</div>
+      </qing-dock-box>
+    </section>
+    <h2>Corner (T+R)</h2>
+    <section>
+      <qing-dock-box t r>
+        <div>qing-dock-box</div>
+      </qing-dock-box>
+    </section>
+    <h2>Corner 2 (B+L)</h2>
+    <section>
+      <qing-dock-box b l>
+        <div>qing-dock-box</div>
+      </qing-dock-box>
+    </section>
+    <h2>Stretched horizontally (L+R)</h2>
+    <section>
+      <qing-dock-box l r>
+        <div>qing-dock-box</div>
+      </qing-dock-box>
+    </section>
+    <h2>Stretched vertically (T+B)</h2>
+    <section>
+      <qing-dock-box t b>
+        <div>qing-dock-box</div>
+      </qing-dock-box>
+    </section>
+    <h2>3 sides (Left)</h2>
+    <section>
+      <qing-dock-box t b l>
+        <div>qing-dock-box</div>
+      </qing-dock-box>
+    </section>
+    <h2>3 sides (Right)</h2>
+    <section>
+      <qing-dock-box t b r>
+        <div>qing-dock-box</div>
+      </qing-dock-box>
+    </section>
+    <h2>3 sides (Top)</h2>
+    <section>
+      <qing-dock-box t l r>
+        <div>qing-dock-box</div>
+      </qing-dock-box>
+    </section>
+    <h2>3 sides (Bottom)</h2>
+    <section>
+      <qing-dock-box b l r>
+        <div>qing-dock-box</div>
+      </qing-dock-box>
+    </section>
+    <h2>Full</h2>
+    <section>
+      <qing-dock-box t b l r>
+        <div>qing-dock-box</div>
+      </qing-dock-box>
+    </section>
+    <script src="./lib/prism.js"></script>
+    <script src="./dist/main.7f44ead8.js"></script>
     <script>
-      const box1 = document.getElementById('box1');
-
-      function handleAddClick() {
-        box1.setAttribute('t', '');
-      }
-
-      function handleRemoveClick() {
-        box1.removeAttribute('t');
+      for (const node of document.getElementsByTagName('section')) {
+        const codeEl = document.createElement('code');
+        const boxEl = node.querySelector('qing-dock-box');
+        if (boxEl) {
+          codeEl.textContent = window.appPretty(boxEl.outerHTML || '').replaceAll('=""', '');
+        }
+        codeEl.classList.add('language-markup');
+        const preEl = document.createElement('pre');
+        preEl.appendChild(codeEl);
+        node.appendChild(preEl);
       }
     </script>
   </body>
