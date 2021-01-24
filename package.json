@@ -1,7 +1,7 @@
 {
   "name": "qing-dock-box",
   "version": "0.0.2",
-  "description": "A web component to align its child element on different sides",
+  "description": "A web component to center or align its child to different sides",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
   "author": "Mgenware (https://github.com/mgenware)",
