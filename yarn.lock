@@ -3019,10 +3019,10 @@ pkg-dir@^4.2.0:
   dependencies:
     find-up "^4.0.0"
 
-plum-element@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/plum-element/-/plum-element-0.0.2.tgz#ba16f6d47d27b04099d9a2b22670202226b20223"
-  integrity sha512-XyJtP2AU0FZHuV/cKhcGtlsyT3bDsnoXjtUZgEGiP8r9j2MIubJOpLbO0trN0SgvMRlkDzgIcuKdbVURaLD9Fg==
+plum-element@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/plum-element/-/plum-element-0.0.3.tgz#25a4c1110ac418545c9c1d443d5d65feb65c2ecf"
+  integrity sha512-GZ1KWtrw/218AbgLG3X3koAZEOCKlHMBgowMdqTKOyVejIhGE5OTux+RhZOUv3MLcVyLQ3z3tSh/F8aGIiBFpQ==
 
 portfinder@^1.0.28:
   version "1.0.28"
