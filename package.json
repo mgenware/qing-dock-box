@@ -5,7 +5,7 @@
   "main": "main.js",
   "license": "MIT",
   "scripts": {
-    "build": "del-cli dist && rollup -c"
+    "build": "del-cli static && rollup -c"
   },
   "private": true,
   "dependencies": {

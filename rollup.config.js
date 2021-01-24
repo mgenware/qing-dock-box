@@ -13,7 +13,7 @@ let plugins = [
 export default {
   input: './main.js',
   output: {
-    dir: 'dist',
+    dir: 'static',
     format: 'iife',
     sourcemap: false,
     entryFileNames: '[name].[hash].js',
