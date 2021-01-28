@@ -2,6 +2,8 @@
   "name": "qing-dock-box",
   "version": "0.1.1",
   "description": "A web component to center or align its child to different sides",
+  "type": "module",
+  "exports": "./dist/main.js",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
   "author": "Mgenware (https://github.com/mgenware)",
@@ -17,7 +19,7 @@
     "test": "daizong build"
   },
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=14.0.0"
   },
   "files": [
     "dist/**/*.js",
@@ -30,19 +32,19 @@
     "@open-wc/testing": "^2.5.32",
     "@types/mocha": "^8.2.0",
     "@types/node": "^14.14.20",
-    "@typescript-eslint/eslint-plugin": "^4.12.0",
-    "@typescript-eslint/parser": "^4.12.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
     "@web/dev-server": "^0.1.3",
     "@web/test-runner": "^0.12.1",
     "daizong": "^0.12.2",
     "esbuild": "^0.8.33",
-    "eslint": "^7.17.0",
+    "eslint": "^7.18.0",
     "eslint-config-airbnb-typescript-lite": "^12.0.0",
     "eslint-config-mgenware": "^0.0.5",
     "eslint-plugin-import": "^2.22.1",
-    "mgenware-tsconfig-wc": "^1.1.0",
+    "mgenware-tsconfig-wc": "^2.0.1",
     "mocha": "^8.2.1",
-    "plum-element": "^0.0.3",
+    "plum-element": "^0.0.4",
     "source-map-support": "^0.5.19",
     "typescript": "^4.1.3"
   }
