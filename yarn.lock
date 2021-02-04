@@ -779,11 +779,6 @@ picomatch@^2.0.5, picomatch@^2.2.1, picomatch@^2.2.2:
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.2.2.tgz#21f333e9b6b8eaff02468f5146ea406d345f4dad"
   integrity sha512-q0M/9eZHzmr0AulXyPwNfZjtwZ/RBZlbN3K3CErVrk50T2ASYI7Bye0EvekFY3IP1Nt2DHu0re+V2ZHIpMkuWg==
 
-plum-element@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/plum-element/-/plum-element-0.0.2.tgz#ba16f6d47d27b04099d9a2b22670202226b20223"
-  integrity sha512-XyJtP2AU0FZHuV/cKhcGtlsyT3bDsnoXjtUZgEGiP8r9j2MIubJOpLbO0trN0SgvMRlkDzgIcuKdbVURaLD9Fg==
-
 pretty@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/pretty/-/pretty-2.0.0.tgz#adbc7960b7bbfe289a557dc5f737619a220d06a5"
@@ -803,12 +798,10 @@ pseudomap@^1.0.2:
   resolved "https://registry.yarnpkg.com/pseudomap/-/pseudomap-1.0.2.tgz#f052a28da70e618917ef0a8ac34c1ae5a68286b3"
   integrity sha1-8FKijacOYYkX7wqKw0wa5aaChrM=
 
-qing-dock-box@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/qing-dock-box/-/qing-dock-box-0.0.2.tgz#c922117ba28ae546bbd0cf2577c69407f98be48a"
-  integrity sha512-DDdh+XpyYz9X5kTk6VSax86jCJu6Vdqj95RIf5o01u80Tw/ayw0dXU0C1rEg+XcbMeGm0kHzdHRoyyRgidZDyQ==
-  dependencies:
-    plum-element "^0.0.2"
+qing-dock-box@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/qing-dock-box/-/qing-dock-box-0.2.0.tgz#24a3c1a1f7d9476c172ff58fdd0d00a0b611a356"
+  integrity sha512-QmKSMKU6tEb7JMzy0gs0jxgevYzfRkRAvXyeD12We+IqZzJSyYiCzDxSKpo3cJGC2rYKQLTD92HHqGusmjd0pA==
 
 quick-lru@^4.0.1:
   version "4.0.1"

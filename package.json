@@ -10,7 +10,7 @@
   "private": true,
   "dependencies": {
     "pretty": "^2.0.0",
-    "qing-dock-box": "^0.0.2"
+    "qing-dock-box": "^0.2.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
