@@ -9,6 +9,7 @@
   },
   "private": true,
   "dependencies": {
+    "plum-element": "^0.0.6",
     "pretty": "^2.0.0",
     "qing-dock-box": "^0.2.0"
   },

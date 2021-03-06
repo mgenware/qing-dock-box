@@ -779,6 +779,11 @@ picomatch@^2.0.5, picomatch@^2.2.1, picomatch@^2.2.2:
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.2.2.tgz#21f333e9b6b8eaff02468f5146ea406d345f4dad"
   integrity sha512-q0M/9eZHzmr0AulXyPwNfZjtwZ/RBZlbN3K3CErVrk50T2ASYI7Bye0EvekFY3IP1Nt2DHu0re+V2ZHIpMkuWg==
 
+plum-element@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/plum-element/-/plum-element-0.0.6.tgz#e442a736e6fe12c5e81138021a81b7170e0d4d8c"
+  integrity sha512-4JpMDnd+ZihOUlePvjpbGETTQ1eSO/H/ySXDdwzpXL3eY/D9IUwgDLl3t8evOvO7w20nPQYo9FiwCtHr6CNvPQ==
+
 pretty@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/pretty/-/pretty-2.0.0.tgz#adbc7960b7bbfe289a557dc5f737619a220d06a5"
