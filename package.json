@@ -1,6 +1,6 @@
 {
   "name": "qing-dock-box",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A web component to center or align its child to different sides",
   "type": "module",
   "exports": "./dist/main.js",
